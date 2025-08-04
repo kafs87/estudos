@@ -1,0 +1,62 @@
+# 🧾 Sistema 1 – Controle de Senhas de Atendimento
+# 💬 Reunião com o PO: "Um cliente que possui uma farmácia quer agilizar o atendimento. Hoje, ele distribui senhas manualmente e as pessoas se perdem na ordem. Ele quer um sistema simples que gere senhas numeradas e informe qual é a próxima senha a ser chamada. Algo simples, como nos laboratórios."
+# 21/07/2025
+# Autor: Kauan Ferreira da Silva
+
+# Biblioteca
+import os
+
+# Lista
+senhas = [0]
+senhas_anteriores = []
+
+# Functions
+def menu():
+    print('\n\n Senha - Farmácia') # Título
+    print('\n\n Opções')
+    print(' 1 - Gerar Senha') # S001
+    print(' 2 - Exibição') # Mostrar senhas
+    print(' 3 - Chamar próxima') # Senha: ...
+    print(' 4 - Reset') # Voltar ao S001
+    print('5 - Sair') # Fecha o sistema
+
+def gerar():
+   print('\n---------- Gerando senha... ----------')
+   senhas[0] += 1
+   senhas_anteriores.append(senhas[0])
+   print(f'Senha criada: S{senhas[0]:03}')
+
+def exibicao():
+   print('\n---------- Exibição ----------')
+   print('\nSenhas anteriores: ')
+   for senha in senhas_anteriores:
+      print(f'S{senha:03}')
+       
+def chamar():
+    print(f'SENHA: {senhas_anteriores(senhas[0])}')
+    senhas_anteriores.remove(senhas[0])
+    
+def reset():
+    None
+    
+def options(select): 
+    if select == 1: gerar()
+    elif (select == 2): exibicao()
+    elif (select == 3): chamar()
+    elif (select == 4): reset()
+    elif (select == 5): print('Até mais!')
+    else: print('Opção inválida.')
+
+select = 0
+while (select != 5):
+    os.system('cls' if os.name == 'nt' else 'clear') # Limpa a tela  
+
+    menu() # Chama a função "menu"
+    select = int(input('\033[1;92m Escolha uma opção: \033[m'))
+    options(select) # Chama a função "options"
+
+    input('\n \033[0;32;4m Pressione ENTER para continuar. \033[m \n')
+ 
+
+
+ 
